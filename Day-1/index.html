@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 20px;
+      }
+
+      .container > div {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .container > div:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .container > div > img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        padding: 20px;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+      }
+
+      .container > div > h3 {
+        font-size: 0.95rem;
+        margin: 15px 15px 10px;
+        color: #333;
+        line-height: 1.4;
+        height: 2.8em;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      .container > div > p {
+        padding: 0 15px;
+        margin-bottom: 10px;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .container > div > p:nth-of-type(1) {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c2c2c;
+      }
+
+      .container > div > p:nth-of-type(1)::before {
+        content: "$";
+        font-size: 0.9rem;
+        margin-right: 2px;
+      }
+
+      .container > div > p:nth-of-type(2) {
+        display: none; /* Hide description for cleaner card layout */
+      }
+
+      .container > div > p:nth-of-type(3) {
+        text-transform: capitalize;
+        color: #666;
+        font-size: 0.85rem;
+        background: #f5f5f5;
+        padding: 4px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        margin: 0 15px 10px;
+      }
+
+      .container > div > p:last-child {
+        margin-top: auto;
+        padding: 15px;
+        border-top: 1px solid #eee;
+        background: #fafafa;
+        font-size: 0.85rem;
+      }
+
+      .container > div > p:last-child span {
+        color: #666;
+        font-size: 0.8rem;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+          gap: 15px;
+          padding: 15px;
+        }
+
+        .container > div > h3 {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          grid-template-columns: 1fr;
+          padding: 10px;
+        }
+
+        .container > div > img {
+          height: 180px;
+        }
+      }
+    </style>
+    <!-- Functionalities - state, lifecycles -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <!-- Rendering/updating/appending react elements -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- <h1>Hello world</h1> -->
+    </div>
+  </body>
+</html>
+<script type="text/babel" src="index.js"></script>
