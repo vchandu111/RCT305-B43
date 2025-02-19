@@ -12,7 +12,8 @@ function App() {
       <BodyNew/>
       <Footer /> */}
       {/* <Counter/> */}
-      <Todo/>
+      {/* <Todo/> */}
+      
     </>
   );
 }

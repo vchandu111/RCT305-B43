@@ -7,7 +7,7 @@ function Counter() {
     
   useEffect(() => {
     console.log("inside useEffect");
-  }, [counter + 1, name]);
+  },[]);
     
     
   console.log("re-rendered");

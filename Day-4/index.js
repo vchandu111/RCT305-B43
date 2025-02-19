@@ -1,7 +1,7 @@
+//controlled components
 function UserForm() {
   const [name, setName] = React.useState("")
   const [email,setEmail] = React.useState("")
-
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(name,email)
