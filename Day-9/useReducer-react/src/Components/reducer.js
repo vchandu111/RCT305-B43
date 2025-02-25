@@ -22,4 +22,5 @@ export const reducer = (state, action) => {
           error: action.payload,
         };
     }
-  };
+};
+  
