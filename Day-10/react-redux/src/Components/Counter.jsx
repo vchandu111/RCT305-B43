@@ -1,16 +1,20 @@
 import React from "react";
 import { useReducer } from "react";
-import { counterReducer } from "./counterReducer";
-import { incrementCounter, decrementCounter, resetCounter } from "./actions";
-export const initialState = {
-  firstCounter: 0,
-};
+import { counterReducer } from "../redux/counterReducer";
+import {
+  incrementCounter,
+  decrementCounter,
+  resetCounter,
+} from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Counter = () => {
-  const [count, dispatch] = useReducer(counterReducer, initialState);
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.firstCounter);
+  console.log(count);
   return (
     <div>
-      <h1>Count:{count.firstCounter}</h1>
+      <h1>Count:{count}</h1>
       <button onClick={() => dispatch(incrementCounter(1))}>
         Increment By 1
       </button>

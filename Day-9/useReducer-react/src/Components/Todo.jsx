@@ -1,6 +1,7 @@
 import { useReducer, useState } from 'react'
-import './App.css'
-
+const initialState = {
+  todos: []
+};
 // Reducer function to handle state updates
 function todoReducer(state, action) {
   switch (action.type) {
@@ -16,9 +17,9 @@ function todoReducer(state, action) {
   }
 }
 
-function App() {
+function Todo() {
   // Initialize useReducer with empty array as initial state
-  const [todos, dispatch] = useReducer(todoReducer, [])
+  const [todos, dispatch] = useReducer(todoReducer, initialState)
   const [inputText, setInputText] = useState('')
 
   const handleSubmit = (e) => {
@@ -71,4 +72,4 @@ function App() {
   )
 }
 
-export default App
+export default Todo
