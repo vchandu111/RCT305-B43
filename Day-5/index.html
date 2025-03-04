@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+</head>
+<body>
+    <h1>Contact Form</h1>
+    
+    <form action="submit.php" method="post" enctype="multipart/form-data">
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            
+            <!-- Text inputs -->
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" placeholder="123-456-7890">
+            </div>
+            
+            <div>
+                <label for="website">Website:</label>
+                <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+            </div>
+            
+            <div>
+                <label for="birthdate">Date of Birth:</label>
+                <input type="date" id="birthdate" name="birthdate">
+            </div>
+            
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="18" max="100">
+            </div>
+            
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+        </fieldset>
+        
+        <!-- Preferences -->
+        <fieldset>
+            <legend>Preferences</legend>
+            
+            <!-- Radio buttons -->
+            <div>
+                <p>Contact preference:</p>
+                <input type="radio" id="contactEmail" name="contactMethod" value="email">
+                <label for="contactEmail">Email</label>
+                
+                <input type="radio" id="contactPhone" name="contactMethod" value="phone">
+                <label for="contactPhone">Phone</label>
+            </div>
+            
+            <!-- Checkboxes -->
+            <div>
+                <p>Interests:</p>
+                <input type="checkbox" id="webDev" name="interests" value="webDev">
+                <label for="webDev">Web Development</label>
+                
+                <input type="checkbox" id="design" name="interests" value="design">
+                <label for="design">Design</label>
+                
+                <input type="checkbox" id="marketing" name="interests" value="marketing">
+                <label for="marketing">Marketing</label>
+            </div>
+            
+            <!-- Select dropdown -->
+            <div>
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="">Select a country</option>
+                    <optgroup label="North America">
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="MX">Mexico</option>
+                    </optgroup>
+                    <optgroup label="Europe">
+                        <option value="UK">United Kingdom</option>
+                        <option value="FR">France</option>
+                        <option value="DE">Germany</option>
+                    </optgroup>
+                </select>
+            </div>
+            
+            <!-- Datalist -->
+            <div>
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" list="cities">
+                <datalist id="cities">
+                    <option value="New York">
+                    <option value="London">
+                    <option value="Tokyo">
+                    <option value="Paris">
+                    <option value="Sydney">
+                </datalist>
+            </div>
+            
+            <!-- Range -->
+            <div>
+                <label for="satisfaction">Satisfaction level:</label>
+                <input type="range" id="satisfaction" name="satisfaction" min="1" max="10" value="5">
+                <output for="satisfaction">5</output>
+            </div>
+            
+            <!-- Color -->
+            <div>
+                <label for="favoriteColor">Favorite color:</label>
+                <input type="color" id="favoriteColor" name="favoriteColor">
+            </div>
+        </fieldset>
+        
+        <!-- Additional Information -->
+        <fieldset>
+            <legend>Additional Information</legend>
+            
+            <!-- File upload -->
+            <div>
+                <label for="resume">Upload file:</label>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+            </div>
+            
+            <!-- Textarea -->
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" cols="40" placeholder="Your message..."></textarea>
+            </div>
+            
+            <!-- Hidden input -->
+            <input type="hidden" id="source" name="source" value="contactForm">
+        </fieldset>
+        
+        <!-- Form controls -->
+        <div>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+</body>
+</html>
