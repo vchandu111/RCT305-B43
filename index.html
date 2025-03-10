@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECH BLOG</title>
+    <style>
+        /* CSS Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --light-text: #7f8c8d;
+    --light-bg: #f8f9fa;
+    --dark-bg: #2c3e50;
+    --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
+    --container-width: 1200px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f5f7fa;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Header Styles */
+.main-header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 80px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--secondary-color);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px 0 0 20px;
+    font-size: 14px;
+    outline: none;
+    width: 200px;
+}
+
+.search-container button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-container button:hover {
+    background-color: #2980b9;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('assets/images/hero-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+    animation: fadeIn 1.4s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+}
+
+/* Main Container */
+.container {
+    max-width: var(--container-width);
+    margin: 50px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 40px;
+}
+
+/* Sidebar */
+.sidebar {
+    animation: slideIn 0.8s ease-out;
+}
+
+.sidebar-widget {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.sidebar-widget h3 {
+    color: var(--secondary-color);
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.categories ul li {
+    margin-bottom: 10px;
+}
+
+.categories ul li a {
+    color: var(--text-color);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+}
+
+.categories ul li a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.categories ul li a::before {
+    content: '▸';
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.mini-post {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.mini-post:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.mini-post img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.mini-post-content {
+    margin-left: 15px;
+}
+
+.mini-post-content h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.mini-post-content h4:hover {
+    color: var(--primary-color);
+}
+
+.mini-date {
+    font-size: 12px;
+    color: var(--light-text);
+}
+
+/* Content Area */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Article Cards */
+.article-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    animation: fadeIn 1s ease-out;
+}
+
+.article-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.article-card.featured {
+    border-top: 5px solid var(--primary-color);
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px 0;
+    color: var(--light-text);
+    font-size: 14px;
+}
+
+.article-meta span {
+    display: flex;
+    align-items: center;
+}
+
+.article-meta i {
+    margin-right: 5px;
+}
+
+.article-header {
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    border-radius: var(--border-radius);
+}
+
+.article-img {
+    transition: transform 0.5s ease;
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.article-card:hover .article-img {
+    transform: scale(1.05);
+}
+
+.article-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 20px;
+    color: white;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.article-card:hover .article-overlay {
+    opacity: 1;
+}
+
+.article-stats {
+    display: flex;
+    gap: 15px;
+}
+
+.article-content {
+    padding: 0 25px 25px;
+}
+
+.article-content h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.author-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.author-name {
+    font-size: 14px;
+    color: var(--light-text);
+}
+
+.article-content p {
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.article-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.read-more {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.read-more i {
+    margin-left: 8px;
+    transition: var(--transition);
+}
+
+.read-more:hover i {
+    transform: translateX(5px);
+}
+
+.share-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.share-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    color: #555;
+    transition: var(--transition);
+}
+
+.share-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Newsletter Section */
+.newsletter {
+    background-color: var(--primary-color);
+    padding: 80px 5%;
+    color: white;
+    text-align: center;
+}
+
+.newsletter-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.newsletter h3 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.newsletter p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    font-size: 16px;
+    outline: none;
+}
+
+.newsletter-form button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0 30px;
+    border-radius: 0 30px 30px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background-color: #1e2b38;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 60px 5% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.footer-grid h3 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-grid h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-about p {
+    margin-bottom: 20px;
+    opacity: 0.8;
+    line-height: 1.8;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.footer-links ul li a:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.footer-contact ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.footer-contact ul li i {
+    margin-right: 15px;
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: 2;
+    }
+    
+    .content {
+        order: 1;
+    }
+    
+    .article-img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        padding: 0 20px;
+        height: 70px;
+    }
+    
+    .nav-toggle-label {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        cursor: pointer;
+    }
+    
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        display: block;
+        background: var(--secondary-color);
+        height: 2px;
+        width: 25px;
+        position: relative;
+        transition: var(--transition);
+    }
+    
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        content: '';
+        position: absolute;
+    }
+    
+    .nav-toggle-label span::before {
+        bottom: 8px;
+    }
+    
+    .nav-toggle-label span::after {
+        top: 8px;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+    }
+    
+    .nav-toggle:checked ~ .nav-links {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-toggle:checked ~ .nav-toggle-label span {
+        background: transparent;
+    }
+    
+    .nav-toggle:checked ~ .nav-toggle-label span::before {
+        transform: rotate(45deg);
+        bottom: 0;
+    }
+    
+    .nav-toggle:checked ~ .nav-toggle-label span::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+    
+    .search-container {
+        display: none;
+    }
+    
+    .hero h2 {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .article-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .article-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .share-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .newsletter h3 {
+        font-size: 26px;
+    }
+    
+    .newsletter p {
+        font-size: 16px;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .newsletter-form button {
+        border-radius: 30px;
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 22px;
+    }
+    
+    .article-img {
+        height: 250px;
+    }
+    
+    .article-content h2 {
+        font-size: 22px;
+    }
+    
+    .hero {
+        padding: 60px 20px;
+    }
+    
+    .hero h2 {
+        font-size: 26px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="header-nav">
+        <nav>
+            <a href="#">HOME</a>
+            <a href="#">PRODUCTS</a>
+            <a href="#">BLOG</a>
+        </nav>
+    </header>
+    <main>
+        <section class="section-header">
+            <header>
+                <h3>MARCH 9 2025</h3>
+                <img src="assets/images/laptop.jpeg" alt="Modern Laptop" />
+            </header>
+            <article>
+                <h2>The Future of Artificial Intelligence</h2>
+                <p>Artificial intelligence continues to transform industries at an unprecedented pace. From healthcare diagnostics to autonomous vehicles, AI solutions are creating new possibilities that were unimaginable just a decade ago. Companies worldwide are investing billions in research and development, seeking to harness the potential of machine learning systems for competitive advantage.
+                    The integration of AI into everyday applications has accelerated, with voice assistants becoming ubiquitous in homes and workplaces. These systems grow smarter with each interaction, learning from user behaviors and adapting to individual preferences in ways that feel increasingly natural and intuitive.
+                    Recent breakthroughs in neural network architecture have enabled more efficient processing with smaller computational footprints, making advanced AI accessible on consumer devices without requiring cloud connections for every operation.
+                </p>
+                <p>Ethical considerations remain at the forefront of AI development discussions. Questions about data privacy, algorithmic bias, and automation's impact on employment require thoughtful approaches from developers, policymakers, and businesses alike. The establishment of responsible AI frameworks has become essential for organizations seeking to innovate while maintaining public trust.
+                    International cooperation on AI governance has increased, with major technology centers collaborating on shared standards that balance innovation with necessary safeguards. These efforts recognize that artificial intelligence represents a global technological shift requiring coordinated responses.
+                    Educational institutions have responded by creating interdisciplinary programs that combine computer science with ethics, psychology, and other humanities to prepare a new generation of AI practitioners with broader perspectives.
+                </p>
+                <p>Looking ahead, the convergence of AI with other emerging technologies promises even more transformative applications. The combination of quantum computing with advanced machine learning models could solve complex problems in materials science, drug discovery, and climate modeling that remain beyond current capabilities.
+                    Edge computing architectures will increasingly bring AI processing closer to data sources, reducing latency and enabling real-time applications in critical systems where milliseconds matter. This shift will be particularly important for applications in emergency response, industrial safety, and healthcare monitoring.
+                    As these technologies mature, the human-AI partnership will likely evolve into new collaborative models where artificial intelligence augments human creativity and decision-making rather than simply automating existing processes.
+                </p>
+                <p class="para">READ MORE</p>
+            </article>
+            <hr>
+        </section>
+        <section class="second-section-header">
+            <header>
+                <h3>FEBRUARY 15 2025</h3>
+                <img src="assets/images/smartphone.jpeg" alt="Smartphone" />
+            </header>
+            <article>
+                <h2>The Evolution of Mobile Technology</h2>
+                <p>Mobile technology has undergone remarkable evolution since the introduction of the first commercially available handheld cellular phone in 1983. Today's smartphones function as powerful pocket computers, cameras, navigation systems, and entertainment centers, fundamentally changing how people interact with information and each other.
+                    The latest generation of devices features folding displays, advanced computational photography, and processor chips that rival desktop computers from just a few years ago. Battery technology has improved incrementally, though power management remains a key focus for manufacturers seeking to balance performance with all-day usage.
+                    Connectivity standards continue to advance with the global rollout of 5G networks promising gigabit speeds and ultra-low latency for mobile applications that require real-time responsiveness.
+                </p>
+                <p>Consumer behavior has evolved alongside these technological developments. Mobile commerce now accounts for more than half of online transactions in many markets, with integrated payment systems making purchases seamless. Social interaction increasingly occurs through mobile platforms, with multimedia messaging and video calls replacing traditional voice communication for many users.
+                    Health applications represent a growing category, with smartphones collecting and analyzing biometric data through built-in sensors and connections to wearable devices. These applications provide users with insights into their activity levels, sleep quality, and other wellness metrics.
+                    The boundaries between work and personal technology continue to blur, with many professionals managing their entire digital lives through a single device that maintains separate secure environments for different contexts.
+                </p>
+                <p>Looking to the future, augmented reality features will likely become more prominent in everyday mobile experiences. Spatial computing capabilities will allow digital information to be meaningfully integrated with the physical world, opening new possibilities for navigation, shopping, education, and entertainment applications.
+                    The environmental impact of mobile technology has received increased attention, with manufacturers implementing more sustainable production methods and designing devices with longer lifespans and improved repairability. Material recovery programs have expanded to reclaim valuable elements from discarded devices.
+                    As mobile technology becomes even more essential to daily life, questions about digital equity and access have gained importance in policy discussions, with initiatives seeking to ensure that connectivity benefits are widely available across socioeconomic boundaries.
+                </p>
+                <p class="para">READ MORE</p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <small>&copy; TechBlog 2025</small>
+        </div>
+    </footer>
+</body>
+</html>
